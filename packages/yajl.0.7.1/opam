@@ -1,9 +1,9 @@
 opam-version: "1"
 maintainer: "mlin@mlin.net"
-build: [
-  [make "install"]
+build: [make "install"]
+remove: [make "uninstall"]
+depends: "ocamlfind"
+depexts: [
+  ["debian" "cmake"]
+  ["ubuntu" "cmake"]
 ]
-remove: [
-  [make "uninstall"] 
-]
-depends: ["ocamlfind"]
