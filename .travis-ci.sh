@@ -28,11 +28,15 @@ cd $TRAVIS_BUILD_DIR
 opam init .
 
 if [ -e pullreq.diff ]; then
+  cat pullreq.diff
   # CR: this will be replaced with the OCamlot analysis of affected packages
   cat pullreq.diff | sort -u | grep '^... b/packages' | sed -E 's,\+\+\+ b/packages/(.*)/.*,\1,' | awk -F. '{print $1}'| sort -u > tobuild.txt
   pkgs=`cat tobuild.txt`
   if [ "$pkgs" != "" ]; then
-    opam install `cat tobuild.txt`
+    depext=`opam install $pkgs -e ubuntu`
+    if [ "$depext" != "" ]; then 
+      sudo apt-get install $depext
+    fi
+    opam install $pkgs
   fi
-  cat pullreq.diff
 fi
