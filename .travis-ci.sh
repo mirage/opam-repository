@@ -35,7 +35,7 @@ if [ -e pullreq.diff ]; then
   allpkgs=`opam list -s -a`
   # test for installability
   for pkg in $pkgsraw; do
-    if [ `echo $allpkgs | grep $pkg` != "" ]; then
+    if [ "`echo $allpkgs | grep $pkg`" != "" ]; then
       pkgs="$pkgs $pkg"
     fi
   done   
