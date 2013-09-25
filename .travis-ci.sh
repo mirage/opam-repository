@@ -31,7 +31,14 @@ if [ -e pullreq.diff ]; then
   cat pullreq.diff
   # CR: this will be replaced with the OCamlot analysis of affected packages
   cat pullreq.diff | sort -u | grep '^... b/packages' | sed -E 's,\+\+\+ b/packages/(.*)/.*,\1,' | awk -F. '{print $1}'| sort -u > tobuild.txt
-  pkgs=`cat tobuild.txt`
+  pkgsraw=`cat tobuild.txt`
+  allpkgs=`opam list -s -a`
+  # test for installability
+  for pkg in $pkgsraw; do
+    if [ `echo $allpkgs | grep $pkg` != "" ]; then
+      pkgs="$pkgs $pkg"
+    fi
+  done   
   if [ "$pkgs" != "" ]; then
     depext=`opam install $pkgs -e ubuntu`
     if [ "$depext" != "" ]; then 
