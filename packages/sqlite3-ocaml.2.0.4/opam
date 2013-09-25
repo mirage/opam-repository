@@ -10,6 +10,7 @@ remove: [
 ]
 depends: ["ocamlfind"]
 depexts: [
+  [ ["ubuntu"  ] ["libsqlite3-dev"]    ]
   [ ["debian"  ] ["libsqlite3-dev"]    ]
   [ ["freebsd" ] ["database/sqlite3"]  ]
   [ ["openbsd" ] [ "database/sqlite3"] ]
