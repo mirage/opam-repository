@@ -14,18 +14,29 @@ function install_opam10_from_source {
   make
   sudo make install
 }
+
+function install_opam11_from_source {
+  curl -OL https://github.com/ocamlpro/opam/archive/master.tar.gz
+  tar -zxvf opam-master.tar.gz
+  cd opam-master
+  ./configure
+  make
+  sudo make install
+}
  
 # Install OCaml and OPAM PPAs
-case "$OCAML_VERSION" in
-3.12.1)
+case "$OCAML_VERSION,$OPAM_VERSION" in
+3.12.1,1.0.0)
   sudo apt-get install ocaml ocaml-native-compilers camlp4-extra
   install_opam10_from_source
   ;;
-4.00.1)
-  echo "yes" | sudo add-apt-repository ppa:avsm/ppa
-  echo TODO need to add OPAM to this repository as there is no i386 at present
+4.01.0,1.0.0)
+  echo "yes" | sudo add-apt-repository ppa:avsm/ppa-testing
+  sudo apt-get update -qq
+  sudo apt-get install -qq ocaml ocaml-native-compilers camlp4-extra
+  install_opam10_from_source
   ;;
-4.01.0)
+4.01.0,1.1.0)
   echo "yes" | sudo add-apt-repository ppa:avsm/ppa-testing
   sudo apt-get update -qq
   sudo apt-get install -qq ocaml ocaml-native-compilers camlp4-extra opam
