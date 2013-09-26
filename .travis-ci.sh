@@ -25,25 +25,36 @@ export OPAMYES=1
 
 cd $TRAVIS_BUILD_DIR
 
-opam init .
+echo Pull request:
+cat pullreq.diff
+# CR: this will be replaced with the OCamlot analysis of affected packages
+cat pullreq.diff | sort -u | grep '^... b/packages' | sed -E 's,\+\+\+ b/packages/(.*)/.*,\1,' | awk -F. '{print $1}'| sort -u > tobuild.txt
+echo To Build:
+cat tobuild.txt
 
-if [ -e pullreq.diff ]; then
-  cat pullreq.diff
-  # CR: this will be replaced with the OCamlot analysis of affected packages
-  cat pullreq.diff | sort -u | grep '^... b/packages' | sed -E 's,\+\+\+ b/packages/(.*)/.*,\1,' | awk -F. '{print $1}'| sort -u > tobuild.txt
-  pkgsraw=`cat tobuild.txt`
+function build_one {
+  pkg=$1
+  echo build one: $pkg
+  rm -rf ~/.opam
+  opam init .
   allpkgs=`opam list -s -a`
   # test for installability
-  for pkg in $pkgsraw; do
-    if [ "`echo $allpkgs | grep $pkg`" != "" ]; then
-      pkgs="$pkgs $pkg"
-    fi
-  done   
-  if [ "$pkgs" != "" ]; then
-    depext=`opam install $pkgs -e ubuntu`
+  if [ "`echo $allpkgs | grep $pkg`" = "" ]; then
+    echo Skipping $pkg as not installable
+  else
+    depext=`opam install $pkg -e ubuntu`
+    echo Ubuntu depexts: $depext
     if [ "$depext" != "" ]; then 
       sudo apt-get install $depext
     fi
     opam install $pkgs
+    if [ "$depext" != "" ]; then 
+      sudo apt-get remove $depext
+      sudo apt-get autoremove
+    fi
   fi
-fi
+}
+
+for i in `cat tobuild.txt`; do
+  build_one $i
+done
