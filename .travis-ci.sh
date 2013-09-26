@@ -27,6 +27,7 @@ case "$OCAML_VERSION" in
   ;;
 4.01.0)
   echo "yes" | sudo add-apt-repository ppa:avsm/ppa-testing
+  sudo apt-get update -qq
   sudo apt-get install -qq ocaml ocaml-native-compilers camlp4-extra opam
   ;;
 *)
@@ -34,7 +35,6 @@ case "$OCAML_VERSION" in
   ;;
 esac
 
-sudo apt-get update -qq
 export OPAMYES=1
 
 cd $TRAVIS_BUILD_DIR
