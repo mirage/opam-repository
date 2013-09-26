@@ -6,21 +6,35 @@ else
   git show > pullreq.diff
 fi
 
+function install_opam10_from_source {
+  curl -OL http://www.ocamlpro.com/pub/opam-full-1.0.0.tar.gz
+  tar -zxvf opam-full-1.0.0.tar.gz
+  cd opam-full-1.0.0
+  ./configure
+  make
+  sudo make install
+}
+ 
 # Install OCaml and OPAM PPAs
 case "$OCAML_VERSION" in
+3.12.1)
+  sudo apt-get install ocaml ocaml-native-compilers camlp4-extra
+  install_opam10_from_source
+  ;;
 4.00.1)
   echo "yes" | sudo add-apt-repository ppa:avsm/ppa
   echo TODO need to add OPAM to this repository as there is no i386 at present
   ;;
 4.01.0)
   echo "yes" | sudo add-apt-repository ppa:avsm/ppa-testing
+  sudo apt-get install -qq ocaml ocaml-native-compilers camlp4-extra opam
   ;;
 *)
+  exit 1
   ;;
 esac
 
 sudo apt-get update -qq
-sudo apt-get install -qq ocaml ocaml-native-compilers camlp4-extra opam
 export OPAMYES=1
 
 cd $TRAVIS_BUILD_DIR
