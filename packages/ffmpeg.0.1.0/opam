@@ -1,11 +1,17 @@
 opam-version: "1"
 maintainer: "smimram@gmail.com"
 build: [
-  ["./configure" "--prefix" "%{prefix}%"]
+  ["./configure" "--prefix" prefix]
   [make]
   [make "install"]
 ]
-remove: [
-  ["ocamlfind" "remove" "ffmpeg"]
+remove: ["ocamlfind" "remove" "ffmpeg"]
+depends: "ocamlfind"
+depexts: [
+  ["debian" "libavutil-dev"]
+  [
+  ["debian" "libswscale-dev"]
+  ["libswscale-dev" "ubuntu"]
 ]
-depends: ["ocamlfind"]
+  ["ubuntu" "libavutil-dev"]
+]

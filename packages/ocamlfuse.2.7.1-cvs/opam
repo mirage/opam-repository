@@ -4,7 +4,12 @@ build: [
   [make "-C" "lib" "INCDIRS=%{lib}%/camlidl"]
   [make "-C" "lib" "install"]
 ]
-remove: [
-  ["ocamlfind" "remove" "Fuse"]
+remove: ["ocamlfind" "remove" "Fuse"]
+depends: [
+  "ocamlfind"
+  "camlidl"
 ]
-depends: [ "ocamlfind" "camlidl" ]
+depexts: [
+  ["debian" "libfuse-dev"]
+  ["ubuntu" "libfuse-dev"]
+]
