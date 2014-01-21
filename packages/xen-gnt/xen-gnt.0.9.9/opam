@@ -13,3 +13,7 @@ depends: [
   "io-page"
   "lwt"
 ]
+depexts: [
+  [["debian"] ["libxen-dev"]]
+  [["ubuntu"] ["libxen-dev"]]
+]
