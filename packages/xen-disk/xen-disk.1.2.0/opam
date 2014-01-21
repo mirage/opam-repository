@@ -1,0 +1,21 @@
+opam-version: "1"
+maintainer: "dave.scott@eu.citrix.com"
+tags: [
+  "org:mirage"
+  "org:xapi-project"
+]
+build: [
+  ["make"]
+  ["make" "install" "BINDIR=%{bin}%"]
+]
+remove: [["make" "uninstall" "BINDIR=%{bin}%"]]
+depends: [
+  "ocamlfind"
+  "mirage-block-xen" {>= "1.0.0"}
+  "xen-evtchn" {>= "0.9.9"}
+  "xen-gnt" {>= "0.9.9"}
+  "xenstore" {>= "1.2.2"}
+  "xenstore_transport"
+  "vhd-format"
+  "cmdliner"
+]
