@@ -5,6 +5,7 @@ tags: [
   "org:xapi-project"
 ]
 build: [
+  ["./configure" "--disable-xenlight"]
   [make]
   [make "install"]
 ]
