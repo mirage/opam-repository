@@ -9,6 +9,6 @@ build: [
 ]
 depends: ["ocamlfind"]
 depopts: [
- ("lwt" & "cstruct" & "io-page")
+ ("lwt" & "cstruct" & "io-page" & "ipaddr")
 ]
 ocaml-version: [>="4.00.0"]
