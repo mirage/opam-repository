@@ -7,4 +7,9 @@ build: [
 remove: [
   [make "PREFIX=%{prefix}%" "uninstall"]
 ]
-depends: ["ounit" "cstruct" {>= "1.0.1"}]
+depends: [
+  "ounit"
+  "cstruct" {>= "1.0.1"}
+  "io-page"
+  "lwt"
+]
