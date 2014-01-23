@@ -13,7 +13,8 @@ depends: [
   "lwt" {>= "2.4.3"}
   "shared-memory-ring" {>= "0.4.3"}
   "xenstore" {>= "1.2.5"}
-  "xenctrl" {>="0.9.9"}
+  "xen-evtchn" {>="0.9.9"}
+  "xen-gnt" {>="0.9.9"}
 ]
 ocaml-version: [>= "4.00.0"]
 os: ["linux"]

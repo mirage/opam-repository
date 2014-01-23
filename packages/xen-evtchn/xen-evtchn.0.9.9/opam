@@ -5,8 +5,6 @@ tags: [
   "org:xapi-project"
 ]
 build: [
-  [make "configure"]
-  ["./configure" "--disable-xenlight"]
   [make]
   [make "install"]
 ]
@@ -14,9 +12,6 @@ remove: [[make "uninstall"]]
 depends: [
   "ocamlfind"
   "lwt"
-  "cmdliner"
-  "cstruct" {>= "0.7.1"}
-  "io-page" {>= "1.0.0"}
 ]
 depexts: [
   [["debian"] ["libxen-dev"]]
