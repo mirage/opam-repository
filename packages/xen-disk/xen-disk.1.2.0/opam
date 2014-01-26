@@ -11,6 +11,7 @@ build: [
 remove: [["make" "uninstall" "BINDIR=%{bin}%"]]
 depends: [
   "ocamlfind"
+  "mirage-block-unix"
   "mirage-block-xen" {>= "1.0.0"}
   "xen-evtchn" {>= "0.9.9"}
   "xen-gnt" {>= "0.9.9"}
