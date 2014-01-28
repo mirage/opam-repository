@@ -5,7 +5,7 @@ build: [
   [make "OS=unix" "install"]
 ]
 remove: [
-  ["ocamlfind" "remove" "mirage-tcpip-unix"]
+  ["ocamlfind" "remove" "tcpip"]
 ]
 depends: [
   "ocamlfind"
