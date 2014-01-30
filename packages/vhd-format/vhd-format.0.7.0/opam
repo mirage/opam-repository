@@ -13,7 +13,7 @@ depends: [
   "ocamlfind"
   "lwt" {>= "2.4.3"}
   "cstruct" {>= "1.0.1"}
-  "mirage-types"
+  "mirage-types" {>= "1.1.0"}
   "ipaddr"
   "io-page"
   "uuidm"
