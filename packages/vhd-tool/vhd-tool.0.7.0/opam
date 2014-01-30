@@ -17,11 +17,11 @@ depends: [
   "vhd-format" {>= "0.7.0"}
   "uuidm"
   "cmdliner"
-  "nbd" {>= "0.9.2"}
+  "nbd" {>= "1.0.0"}
   "ounit"
   "uri"
   "tar-format"
   "sha"
-  "cohttp" {>="0.9.15"}
+  "cohttp"
   "ssl"
 ]
