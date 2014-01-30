@@ -13,7 +13,7 @@ remove: [[make "uninstall"]]
 depends: [
   "ocamlfind"
   "lwt" {>= "2.4.3"}
-  "cstruct" {>= "0.7.1"}
+  "cstruct" {>= "1.0.1"}
   "vhd-format" {>= "0.7.0"}
   "uuidm"
   "cmdliner"
@@ -22,6 +22,6 @@ depends: [
   "uri"
   "tar-format"
   "sha"
-  "cohttp"
+  "cohttp" {>="0.9.15"}
   "ssl"
 ]
