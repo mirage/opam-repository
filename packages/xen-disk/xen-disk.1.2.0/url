@@ -1,1 +1,2 @@
-git: "git://github.com/mirage/xen-disk"
+archive: "https://github.com/mirage/xen-disk/archive/v1.2.0.tar.gz"
+checksum: "ec24f8d492b067d34e6343f21fdeaf99"
