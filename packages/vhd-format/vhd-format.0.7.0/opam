@@ -12,8 +12,8 @@ remove: [[make "uninstall"]]
 depends: [
   "ocamlfind"
   "lwt" {>= "2.4.3"}
-  "cstruct" {>= "0.7.1"}
-  "mirage-types"
+  "cstruct" {>= "1.0.1"}
+  "mirage-types" {>= "1.1.0"}
   "ipaddr"
   "io-page"
   "uuidm"
