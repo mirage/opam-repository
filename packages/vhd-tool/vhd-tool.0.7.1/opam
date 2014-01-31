@@ -17,7 +17,7 @@ depends: [
   "vhd-format" {>= "0.7.0"}
   "uuidm"
   "cmdliner"
-  "nbd" {>= "0.9.2"}
+  "nbd" {>= "1.0.1"}
   "ounit"
   "uri"
   "tar-format"
