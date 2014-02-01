@@ -11,7 +11,7 @@ depends: [
   "lwt" {>= "2.4.3"}
   "mirage-types" {>= "1.1.0"}
   "io-page" {>= "1.0.0"}
-  "mirage-xen" {>= "1.0.1"}
+  "mirage-xen" {>= "1.1.0"}
   "ipaddr" {>= "1.0.0"}
 ]
 ocaml-version: [>= "4.00.0"]
