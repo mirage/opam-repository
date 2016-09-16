@@ -7,10 +7,10 @@ license: "BSD + some optional GPL components"
 dev-repo: "https://github.com/talex5/mini-os.git"
 available: [ os != "darwin" ]
 build: [
-  [make "debug=n" "CONFIG_VERBOSE_BOOT=n"]
+  [make "debug=n" "CONFIG_VERBOSE_BOOT=n" "MINIOS_COMPILE_ARCH=x86_64"]
 ]
 install: [
-  [make "install" "LIBDIR=%{prefix}%/lib" "INCLUDEDIR=%{prefix}%/include"]
+  [make "install" "LIBDIR=%{prefix}%/lib" "INCLUDEDIR=%{prefix}%/include" "MINIOS_COMPILE_ARCH=x86_64"]
 ]
 remove: [
   ["rm" "-r"
